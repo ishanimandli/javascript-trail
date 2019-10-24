@@ -21,3 +21,26 @@ console.log(getFullName('laura', 'miller'))
 /** 3. calculateTotal */
 
 // Define your function here
+function calculateTotal(base_price, state, tax=0.05){
+  const subtotal = base_price * (1 + tax);
+
+  let fee = 0;
+
+  if (state === 'CA'){
+      fee = 0.03 * subtotal;
+  }
+  else if (state === 'PA'){
+    fee = 2;
+  }
+  else if (state === 'MA'){
+    if (base_price <= 100){
+      fee = 1;
+    }
+    else{
+      fee = 3;
+    }
+  }
+  return subtotal + fee;
+}
+
+console.log(calculateTotal(40, 'CA'));
